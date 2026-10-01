@@ -3,6 +3,7 @@
     --purple-100: hsl(275, 100%, 97%);
     --purple-600: hsl(292, 16%, 49%);
     --purple-950: hsl(292, 42%, 14%);
+    --purple-accent: hsl(281, 83%, 54%);
 }
 
 @font-face {
@@ -74,6 +75,12 @@ picture img {
 .c-accordion__item {
     padding-inline: 0.25rem;
     border-block-end: 1px solid var(--purple-100);
+
+    &:hover, 
+    &:focus-visible,
+    &:focus-within {
+        color: var(--purple-accent);
+    }
 }
 
 .c-accordion__item:last-child {
@@ -118,22 +125,22 @@ summary::-webkit-details-marker {
     flex: none;
 }
 
-.isClosed {
+.c-accordion__icon--collapse {
     display: none;
 }
 
-.c-accordion__item[open] .isOpen {
+.c-accordion__item[open] .c-accordion__icon--expand {
     display: none;
 }
 
-.c-accordion__item[open] .isClosed {
+.c-accordion__item[open] .c-accordion__icon--collapse {
     display: block;
 }
 
 .c-accordion__content {
     margin: 0 0 1.25rem;
     color: var(--purple-600);
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1rem);
     line-height: 1.5;
 }
 
@@ -146,6 +153,16 @@ summary::-webkit-details-marker {
 
 .attribution a {
     color: var(--purple-950);
+}
+
+.attribution a:hover {
+    color: var(--purple-accent);
+}
+
+.attribution a:focus-visible {
+    border-radius: 2px;
+    outline: 2px solid var(--purple-accent);
+    outline-offset: 3px;
 }
 
 @media (min-width: 48rem) {
